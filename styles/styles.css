@@ -11,6 +11,8 @@ html {
 body {
     min-width: 540px;
     margin: 18px;
+    /*background-image:url(../images/arany_barsony_hatter.png);
+   */
 }
 .skills-table, .business-table{
     width:100%;
