@@ -36,6 +36,13 @@ body {
 .upgrade-icon-cell{
     width: 110px;
     padding: 5px;
+    
+}
+.upgrade-icon-cell> img {
+    width: 100px;
+    border-radius: 100px;
+    border: 3px solid rgba(255, 215, 0,25);
+
 }
 
 @media screen and (max-width: 1400px) {
