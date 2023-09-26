@@ -11,7 +11,7 @@ let template = `
 <p>${ goldPerClick } arany / klikk</p>
 <p>${ goldPerSec } arany / mp</p>`
 ;
-let clickingAreaNode = document.querySelector(".js-clicking-are-container");
+let clickingAreaNode = document.querySelector('.js-clicking-area-container');
 
 clickingAreaNode.innerHTML = template;
 
@@ -46,12 +46,37 @@ function getSkill(skillName,goldPerClickIncrement, description, amount, price, l
 
 }
 
- let skillTemplate =
- getSkill(skillName,goldPerClickIncrement, description, amount, price, link);
+let skillTemplate =
+getSkill(skillName,goldPerClickIncrement, description, amount, price, link);
 
- document.querySelector('.js-skills-tbody').innerHTML = skillTemplate
+document.querySelector('.js-skills-tbody').innerHTML = skillTemplate
 
-function  getEmployee () {
 
+let employeeName ='Aranykutató';
+let goldPerClickSec = 1;
+let pproperty = 'Aranyat keres és talál.';
+let pamount = 0;
+let pprice =10;
+let plink = "./images/aranykutato.png"
+
+function  getEmployee (employeeName,goldPerClickSec,pproperty,pamount,pprice,plink) {
+    return`
+    <tr>
+        <td class="upgrade-icon-cell">
+        <img class="skill-image" src="${plink}" alt="${employeeName}">
+        </td>
+        <td class="upgrade-stats-cell">
+            <p> db: ${pamount}</p>
+            <p> ár: ${pprice}</p>
+        </td>
+        <td class="upgrade-text-cell">
+            <p><strong>${employeeName} ( ${goldPerClickSec} arany / mp)</strong></p>
+            <p>${pproperty}.</p>
+        </td>
+        </tr>
+    `
 }
 
+let employeeTemplate =
+getEmployee (employeeName,goldPerClickSec,pproperty,pamount,pprice,plink);
+document.querySelector('.js-bussines-tbody').innerHTML = employeeTemplate
