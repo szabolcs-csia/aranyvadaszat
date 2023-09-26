@@ -4,16 +4,18 @@ let gold = 0;
 let goldPerClick = 1;
 let goldPerSec = 0;
 
-let template = `
-<p><strong>${ seconds } másodperc</strong></p>
-<img src="./images/gold_taller.png" alt="arany klikkelo">
-<p><strong>${ gold } arany</strong></p>
-<p>${ goldPerClick } arany / klikk</p>
-<p>${ goldPerSec } arany / mp</p>`
+function getTemplate(){ 
+    return`
+        <p><strong>${ seconds } másodperc</strong></p>
+        <img src="./images/gold_taller.png" alt="arany klikkelo">
+        <p><strong>${ gold } arany</strong></p>
+        <p>${ goldPerClick } arany / klikk</p>
+        <p>${ goldPerSec } arany / mp</p>`
 ;
+}
 let clickingAreaNode = document.querySelector('.js-clicking-area-container');
 
-clickingAreaNode.innerHTML = template;
+clickingAreaNode.innerHTML = getTemplate();
 
 // később ebből objektum lesz
 let skillName = 'Aranykutatás'
