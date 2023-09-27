@@ -19,6 +19,13 @@ body {
 }
 
 /******************main area**************************/
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+    color: rgb(148, 97, 27);
+}
 .main-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
