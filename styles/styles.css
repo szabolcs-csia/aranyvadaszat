@@ -53,6 +53,22 @@ h1 {
     border: 3px solid rgba(255, 215, 0,25);
 
 }
+.inventory-container.per-click {
+    margin-top: 10px;
+    border: 5px solid rgba(210, 143, 9, 0.464);
+    border-radius: 20px;
+}
+.inventory-container.per-sec {
+    margin-top: 10px;
+    border: 5px solid rgba(210, 143, 9, 0.464);
+    border-radius: 20px;
+}
+.clicking-area-container {
+    margin: 10px 5px 5px 5px;
+    border: 5px solid rgba(210, 143, 9, 0.464);
+    border-radius: 20px;
+    
+}
 
 @media screen and (max-width: 1400px) {
        .main-container{
