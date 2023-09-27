@@ -28,42 +28,42 @@ let skillList = [
     },
     {
         skillName: 'Bagolyidomítás',
-        goldPerClickIncrement: 1,
+        goldPerClickIncrement: 10,
         description:'Baglyok betanítását készpénzre válthatjuk. Magasabb szinten postabaglyokat nevelhetünk. ',
         amount: 0,
-        price: '125K',
+        price: 200,
         link: "./images/bagoly.png",
         },
     {
         skillName: 'Gyógyfőzetkészítés',
-        goldPerClickIncrement: 1,
+        goldPerClickIncrement: 25,
         description:'Minél jobban kitanuljuk a gyógyfőzetek készítésének tudományát,annál több gyógyfőzetet tudunk értékesíteni aranyért cserébe.',
         amount: 0,
-        price: '125k',
+        price: 750,
         link: "./images/gyogyfozet.png",
         },
     {
         skillName: 'Kereskedelem',
-        goldPerClickIncrement: 1,
+        goldPerClickIncrement: 100,
         description:'Varázstárgyak készítésével és értékesítésével profitot zsebelhetünk be.',
         amount: 0,
-        price: '125',
+        price: 4000,
         link: "./images/kereskedelem2.png",
     },
     {
         skillName: 'Alkímia',
-        goldPerClickIncrement: 1,
+        goldPerClickIncrement: 300,
         description:'Az aranykészítés tudománya titkos recept alapján.',
         amount: 0,
-        price: '125K',
+        price: 15000,
         link: "./images/alkimia.png",
     },
     {
         skillName: 'Varázstudomány',
-        goldPerClickIncrement: 1,
+        goldPerClickIncrement: 1000,
         description:'Az alkímia hatását tovább erősíti és oktatási tevékenységet végezhetünk.',
         amount: 0,
-        price: '125K',
+        price: 100000,
         link: "./images/varazs_tudomany.png",
     },
 ];
@@ -85,9 +85,9 @@ function getSkill({ skillName, goldPerClickIncrement, description, amount, price
         </td>
         </tr>
     `
-   };
+};
 
- let skillTemplate = '';
+let skillTemplate = '';
 
 for (let i = 0; i < skillList.length; i++) {
   skillTemplate += getSkill(skillList[i]);
@@ -107,42 +107,42 @@ let employeeList = [
     },
     {
         employeeName: 'Bagolyidomár',
-        goldPerSecIncrement: 1,
+        goldPerSecIncrement: 5,
         description:'Szerződéses munkatársként baglyokat tanít.',
         amount: 0,
-        price: '125K',
+        price: 1000,
         link: "./images/bagoly_idomar.png",
         },
     {
         employeeName: 'Gyógyfőzet készítő',
-        goldPerSecIncrement: 1,
+        goldPerSecIncrement: 10,
         description:'Gyógyfőzeteket készít és értékesít a piacon.',
         amount: 0,
-        price: '125k',
+        price: 3000,
         link: "./images/gyogyfozet_keszito.png",
         },
     {
         employeeName: 'Kereskedő',
-        goldPerSecIncrement: 1,
+        goldPerSecIncrement: 25,
         description:'Varázstárgyakat készít és értékesít.',
         amount: 0,
-        price: '125',
+        price: 10000,
         link: "./images/kereskedo.png",
     },
     {
         employeeName: 'Varázsló Professzor',
-        goldPerSecIncrement: 1,
+        goldPerSecIncrement: 100,
         description:'Tanulókat képez ki szerződéses munkatársként.Szabadidejében alkímiával foglalkozik.',
         amount: 0,
-        price: '125K',
+        price: 50000,
         link: "./images/varazslo_prof.png",
     },
     {
         employeeName: 'Befektető kacsa',
-        goldPerSecIncrement: 1,
+        goldPerSecIncrement: 250,
         description:'Dagober bácsihoz hasonló szakértelemmel kezeli és fialtatja a vagyonodat.',
         amount: 0,
-        price: '125K',
+        price: 200000,
         link: "./images/arany_kacsa.png",
     },
 ];
