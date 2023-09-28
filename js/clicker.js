@@ -10,8 +10,7 @@ function getTemplate(){
         <img src="./images/gold_taller.png" alt="arany klikkelo">
         <p><strong>${ gold } arany</strong></p>
         <p>${ goldPerClick } arany / klikk</p>
-        <p>${ goldPerSec } arany / mp</p>`
-;
+        <p>${ goldPerSec } arany / mp</p>`;
 }
 let clickingAreaNode = document.querySelector('.js-clicking-area-container');
 
@@ -77,7 +76,7 @@ function getSkill({ skillName, goldPerClickIncrement, description, amount, price
         </td>
         <td class="upgrade-stats-cell">
             <p> db: ${ amount }</p>
-            <p> ár: ${ price }</p>
+            <p> ár:<strong>${ price }</strong></p>
         </td>
         <td class="upgrade-icon-cell">
             <img class="skill-image" src="${ link }"
@@ -91,8 +90,7 @@ let skillTemplate = '';
 
 for (let i = 0; i < skillList.length; i++) {
   skillTemplate += getSkill(skillList[i]);
-}
-;
+};
 
 document.querySelector('.js-skills-tbody').innerHTML = skillTemplate
 
@@ -157,7 +155,7 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
         </td>
         <td class="upgrade-stats-cell">
             <p> db: ${ amount }</p>
-            <p> ár: ${ price }</p>
+            <p> ár: <strong>${ price }</strong></p>
         </td>
         <td class="upgrade-text-cell">
             <p><strong>${employeeName} ( ${goldPerSecIncrement} / mp)</strong></p>
@@ -165,7 +163,7 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
         </td>
     </tr>    
     `
-}
+};
 let bussinesTemplate = '';
 
 for (let i = 0; i < employeeList.length; i++) {
