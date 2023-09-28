@@ -98,7 +98,7 @@ let employeeList = [
     {
         employeeName: 'Aranykutató',
         goldPerSecIncrement: 1,
-        description:'Aranyat keres és talál. ',
+        description:'Aranyat tartalmazó homokból, iszapból aranyat keres és talál. ',
         amount: 0,
         price: 100,
         link: "./images/aranykutato.png",
@@ -106,7 +106,7 @@ let employeeList = [
     {
         employeeName: 'Bagolyidomár',
         goldPerSecIncrement: 5,
-        description:'Szerződéses munkatársként baglyokat tanít.',
+        description:'Baglyokat betanító személy, aki a baglyokban élő hajlamot és ösztönt előhívva különféle feladatok elvégzésére képezz ki.',
         amount: 0,
         price: 1000,
         link: "./images/bagoly_idomar.png",
@@ -114,7 +114,7 @@ let employeeList = [
     {
         employeeName: 'Gyógyfőzet készítő',
         goldPerSecIncrement: 10,
-        description:'Gyógyfőzeteket készít és értékesít a piacon.',
+        description:'Ősi, hatékony módon gyógyfőzeteket készít és értékesít a piacon.',
         amount: 0,
         price: 3000,
         link: "./images/gyogyfozet_keszito.png",
@@ -122,7 +122,7 @@ let employeeList = [
     {
         employeeName: 'Kereskedő',
         goldPerSecIncrement: 25,
-        description:'Varázstárgyakat készít és értékesít.',
+        description:'A szükségletek kielégítésére varázstárgyakat készít és értékesít.',
         amount: 0,
         price: 10000,
         link: "./images/kereskedo.png",
