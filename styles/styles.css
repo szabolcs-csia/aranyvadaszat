@@ -40,7 +40,7 @@ h1 {
     
 }
 .upgrade-stats-cell {
-    width: 85px;
+    width: 70px;
     padding: 3px;;
 }
 .upgrade-text-cell{
@@ -58,6 +58,8 @@ h1 {
     width: 100px;
     border-radius: 50%;
     border: 3px solid rgba(255, 215, 0,25);
+    cursor: pointer;
+    user-select: none;
 
 }
 .inventory-container.per-click {
@@ -83,13 +85,18 @@ h1 {
     background-image: url(../images/aranyozott_hatter.png);
     box-shadow:rgba(17, 14, 8, 0.464) 2px 5px 5px;
 }
+.goldcoin{
+    cursor: pointer;
+    user-select: none;
+   
+}
+.goldcoin:hover{
+    transition: all 0.5s linear;
+    rotate:calc(360deg);
+    animation-duration: .5s;
+}
 
 
-
-
-/*.price {
-    color:goldenrod;
-}*/
 
 @media screen and (max-width: 1400px) {
        .main-container{

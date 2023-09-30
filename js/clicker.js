@@ -1,20 +1,36 @@
+let clickingAreaNode = document.querySelector('.js-clicking-area-container');
+
 //állapottér
 let seconds = 0;
 let gold = 0;
 let goldPerClick = 1;
 let goldPerSec = 0;
 
-function getTemplate(){ 
+function getClikingAreaTemplate(){ 
     return`
         <p><strong>${ seconds } másodperc</strong></p>
-        <img src="./images/gold_taller.png" alt="arany klikkelo">
+        <img 
+        src="./images/gold_taller_after.png" 
+        alt="arany klikkelo"
+        data-enable_click="true"
+        class="goldcoin">
         <p><strong>${ gold } arany</strong></p>
         <p>${ goldPerClick } arany / klikk</p>
         <p>${ goldPerSec } arany / mp</p>`;
 }
-let clickingAreaNode = document.querySelector('.js-clicking-area-container');
+function handleGoldClicked(event) {
+if ( event.target.dataset.enable_click === "true") {
+        gold +=goldPerClick;
+        render();
+    }
 
-clickingAreaNode.innerHTML = getTemplate();
+}
+
+function formatPrice(price) {
+    if (price < 1000) return price;
+    let kValue = price / 1000;
+    return `${kValue}K`;
+}
 
 let skillList = [
     {
@@ -76,23 +92,16 @@ function getSkill({ skillName, goldPerClickIncrement, description, amount, price
         </td>
         <td class="upgrade-stats-cell">
             <p> db: ${ amount }</p>
-            <p> ár:<strong>${ price }</strong></p>
+            <p> ár:<strong>${formatPrice(price)}</strong></p>
         </td>
         <td class="upgrade-icon-cell">
             <img class="skill-image" src="${ link }"
-                alt="${ skillName }">
+                alt="${ skillName }"
+                data-enable_click="true">
         </td>
         </tr>
     `
 };
-
-let skillTemplate = '';
-
-for (let i = 0; i < skillList.length; i++) {
-  skillTemplate += getSkill(skillList[i]);
-};
-
-document.querySelector('.js-skills-tbody').innerHTML = skillTemplate
 
 let employeeList = [
     {
@@ -155,7 +164,7 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
         </td>
         <td class="upgrade-stats-cell">
             <p> db: ${ amount }</p>
-            <p> ár: <strong>${ price }</strong></p>
+            <p> ár: <strong>${formatPrice(price)}</strong></p>
         </td>
         <td class="upgrade-text-cell">
             <p><strong>${employeeName} ( ${goldPerSecIncrement} / mp)</strong></p>
@@ -164,11 +173,31 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
     </tr>    
     `
 };
+
+function render(){
+    clickingAreaNode.innerHTML = getClikingAreaTemplate();
+    let skillTemplate = '';
+for (let i = 0; i < skillList.length; i++) {
+skillTemplate += getSkill(skillList[i]);
+};
+document.querySelector('.js-skills-tbody').innerHTML = skillTemplate;
 let bussinesTemplate = '';
-
 for (let i = 0; i < employeeList.length; i++) {
-  bussinesTemplate += getEmployee(employeeList[i]);
-}
-;
-
+bussinesTemplate += getEmployee(employeeList[i]);
+};
 document.querySelector('.js-bussines-tbody').innerHTML = bussinesTemplate;
+    
+
+}
+
+function initialize () {
+seconds = 0;
+gold = 0;
+goldPerClick = 1;
+goldPerSec = 0;
+
+clickingAreaNode.addEventListener('click',handleGoldClicked);
+render();
+}
+
+initialize();
