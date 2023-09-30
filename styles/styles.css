@@ -12,7 +12,6 @@ body {
     min-width: 540px;
     margin: 18px;
     background-image:url(../images/arany_barsony_hatter.png);
-   
 }
 .skills-table, .business-table{
     width:100%;
@@ -23,8 +22,9 @@ body {
 h1 {
     text-align: center;
     padding: 20px;
-    font-size: 40px;
-    color: rgb(238, 203, 153);
+    font-size: 50px;
+    color: rgb(245, 238, 230);
+    text-shadow: rgb(122, 73, 32) 1px 1px;
 }
 .main-container {
     display: grid;
@@ -61,33 +61,35 @@ h1 {
 
 }
 .inventory-container.per-click {
-    margin-top: 10px;
+    margin:10px 10px 5px;
     border: 5px solid rgba(210, 143, 9, 0.464);
     border-radius: 20px;
     background-image: url(../images/aranyozott_hatt2.png);
+    box-shadow:rgba(34, 26, 9, 0.464) 2px 5px 5px;
 }
 .inventory-container.per-sec {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin:10px 10px 5px;
     border: 5px solid rgba(210, 143, 9, 0.464);
     border-radius: 20px;
     background-image: url(../images/aranyozott_hatt2.png);
+    box-shadow:rgba(34, 26, 9, 0.464) 2px 5px 5px;
     
 }
 .clicking-area-container {
-    margin: 10px 5px 5px 5px;
+    margin: 10px 10px 5px;
     padding-top: 25px;
     border: 5px solid rgba(210, 143, 9, 0.464);
     border-radius: 20px;
     background-image: url(../images/aranyozott_hatter.png);
+    box-shadow:rgba(17, 14, 8, 0.464) 2px 5px 5px;
 }
 
 
 
 
-.price {
+/*.price {
     color:goldenrod;
-}
+}*/
 
 @media screen and (max-width: 1400px) {
        .main-container{
