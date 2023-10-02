@@ -8,9 +8,9 @@ function getInitialState(){
     //fontos: a skillList és az employeeList tömbök nincsenek alapértelmezéásbe hozva
     return {
         seconds: 0,
-        gold: 1e7,
+        gold: 0,
         goldPerClick: 1,
-        goldPerSec: 1,
+        goldPerSec: 0,
         skillList: [
             {
                 skillName: 'Aranykutatás',
