@@ -1,12 +1,13 @@
 let clickingAreaNode = document.querySelector('.js-clicking-area-container');
 
+
 //állapottér
 let seconds = 0;
 let gold = 0;
 let goldPerClick = 1;
 let goldPerSec = 0;
 
-function getClikingAreaTemplate(){ 
+function getClickingAreaTemplate(){ 
     return`
         <p><strong>${ seconds } másodperc</strong></p>
         <img 
@@ -18,19 +19,21 @@ function getClikingAreaTemplate(){
         <p>${ goldPerClick } arany / klikk</p>
         <p>${ goldPerSec } arany / mp</p>`;
 }
-function handleGoldClicked(event) {
-if ( event.target.dataset.enable_click === "true") {
-        gold +=goldPerClick;
+
+function handleGoldClicked(event){
+    if(event.target.dataset.enable_click === 'true'){
+        gold += goldPerClick;
         render();
-    }
+   }
+};
 
+/*****PRE: 0 <= PRICE <= 999999*/
+function formatPrice(price){
+    if( price < 1000) return price;
+   let kValue = price / 1000;
+   return `${kValue}K`;
 }
 
-function formatPrice(price) {
-    if (price < 1000) return price;
-    let kValue = price / 1000;
-    return `${kValue}K`;
-}
 
 let skillList = [
     {
@@ -48,7 +51,7 @@ let skillList = [
         amount: 0,
         price: 200,
         link: "./images/bagoly.png",
-        },
+    },
     {
         skillName: 'Gyógyfőzetkészítés',
         goldPerClickIncrement: 25,
@@ -56,7 +59,7 @@ let skillList = [
         amount: 0,
         price: 750,
         link: "./images/gyogyfozet.png",
-        },
+    },
     {
         skillName: 'Kereskedelem',
         goldPerClickIncrement: 100,
@@ -154,8 +157,6 @@ let employeeList = [
     },
 ];
 
-
-
 function getEmployee({ employeeName, goldPerSecIncrement, description, amount, price, link }) {
     return`
     <tr>
@@ -174,30 +175,22 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
     `
 };
 
-function render(){
-    clickingAreaNode.innerHTML = getClikingAreaTemplate();
-    let skillTemplate = '';
-for (let i = 0; i < skillList.length; i++) {
-skillTemplate += getSkill(skillList[i]);
-};
-document.querySelector('.js-skills-tbody').innerHTML = skillTemplate;
-let bussinesTemplate = '';
-for (let i = 0; i < employeeList.length; i++) {
-bussinesTemplate += getEmployee(employeeList[i]);
-};
-document.querySelector('.js-bussines-tbody').innerHTML = bussinesTemplate;
+function  render() {
+    clickingAreaNode.innerHTML = getClickingAreaTemplate();
+    document.querySelector(".js-skills-tbody").innerHTML = skillList.map(getSkill).join("");
+    document.querySelector(".js-bussines-tbody").innerHTML = employeeList.map(getEmployee).join("");
+
+}
+
+function initialize() {
+    seconds = 0;
+    gold = 0;
+    goldPerClick = 1;
+    goldPerSec = 0;
     
+    clickingAreaNode.addEventListener('click',handleGoldClicked);
+    render();
+};
 
-}
-
-function initialize () {
-seconds = 0;
-gold = 0;
-goldPerClick = 1;
-goldPerSec = 0;
-
-clickingAreaNode.addEventListener('click',handleGoldClicked);
-render();
-}
 
 initialize();
