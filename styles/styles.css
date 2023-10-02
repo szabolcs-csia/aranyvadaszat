@@ -52,7 +52,15 @@ h1 {
 .upgrade-icon-cell{
     width: 110px;
     padding: 5px;
+    user-select: none;
+    cursor: pointer;
+    opacity: 0.55;
     
+}
+.upgrade-icon-cell:hover {
+    opacity: 1;
+
+
 }
 .skill-image{
     width: 100px;
