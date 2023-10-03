@@ -1,16 +1,20 @@
 let clickingAreaNode = document.querySelector('.js-clicking-area-container');
-let inventoryContainerNode =document.querySelector('.js-inventory-container');
+let skillsContainerNode =document.querySelector('.js-skills-container');
+let employeecontainerNode =document.querySelector('.js-employee-container');
 
 //állapottér
-let { seconds, gold, goldPerClick, goldPerSec, skillList, employeeList } = getInitialState();
+let { seconds, gold, goldPerClick, goldPerSec, skillList, employeeList, startTimestamp } = getInitialState();
 
 function getInitialState(){
-    //fontos: a skillList és az employeeList tömbök nincsenek alapértelmezéásbe hozva
+    //fontos: a skillList és az employeeList tömbök nincsenek alapértelmezésbe hozva
+    
     return {
+        intervalId:setInterval(administrateTime,2000),
+        startTimestamp: new Date().getTime(),
         seconds: 0,
         gold: 0,
         goldPerClick: 1,
-        goldPerSec: 0,
+        goldPerSec: 0.5,
         skillList: [
             {
                 skillName: 'Aranykutatás',
@@ -114,6 +118,64 @@ function getInitialState(){
     }
 };
 
+function administrateTime(){
+    let currentTimestamp = new Date().getTime();
+    let elapsedTime = Math.floor((currentTimestamp - startTimestamp) / 1000 );
+    let rewardSeconds = elapsedTime - seconds;
+    if (rewardSeconds > 0) {
+        gold += rewardSeconds * goldPerSec;
+        seconds = elapsedTime;
+        render();
+    }
+}
+
+
+/**********************************Click event listeneres************************************/
+function handleGoldClicked(event){
+    if(event.target.dataset.enable_click === 'true'){
+        gold += goldPerClick;
+        render();
+}
+}
+
+function handleSkillsClicked(event) {
+    let clickIndex = event.target.dataset.index;
+    if(typeof clickIndex !=='undefined' ){
+    let clickedSkill = skillList[clickIndex];
+    if ( gold < clickedSkill.price ) {
+        alert("Nincs elég aranyad!");
+        return;
+    }
+    gold -=   clickedSkill.price;
+    goldPerClick += clickedSkill.goldPerClickIncrement;
+    clickedSkill.amount += 1;
+    render();
+    }
+}
+
+function handleEmployeeClicked(event) {
+    let clickIndex = event.target.dataset.index;
+    if(typeof clickIndex !=='undefined' ){
+    let clickedEmployee = employeeList[clickIndex];
+    if ( gold < clickedEmployee.price ) {
+        alert("Nincs elég aranyad!");
+        return;
+    }
+    gold -=   clickedEmployee.price;
+    goldPerSec += clickedEmployee.goldPerSecIncrement;
+    clickedEmployee.amount += 1;
+    render();
+    }
+}
+
+/************************************templates*****************************************/
+/*****PRE: 0 <= PRICE <= 999999*/
+function formatPrice(price){
+    if( price < 1000) return price;
+   let kValue = price / 1000;
+   return `${kValue}K`;
+};
+
 function getClickingAreaTemplate(){ 
     return`
         <p><strong>${ seconds } másodperc</strong></p>
@@ -125,36 +187,6 @@ function getClickingAreaTemplate(){
         <p><strong>${ gold } arany</strong></p>
         <p>${ goldPerClick } arany / klikk</p>
         <p>${ goldPerSec } arany / mp</p>`;
-};
-
-/***************Click event listeneres*******/
-function handleGoldClicked(event){
-    if(event.target.dataset.enable_click === 'true'){
-        gold += goldPerClick;
-        render();
-}
-}
-
-function handleInventoryClicked(event) {
-    let clickIndex = event.target.dataset.index;
-    if(typeof clickIndex !=='undefined' ){
-    let clickedSkill = skillList[clickIndex];
-    if ( gold < clickedSkill.price ) {
-        alert("nincs elég arany!");
-        return;
-    }
-    gold -=   clickedSkill.price;
-    goldPerClick += clickedSkill.goldPerClickIncrement;
-    clickedSkill.amount += 1;
-    render();
-    }
-}
-
-/*****PRE: 0 <= PRICE <= 999999*/
-function formatPrice(price){
-    if( price < 1000) return price;
-   let kValue = price / 1000;
-   return `${kValue}K`;
 };
 
 
@@ -178,11 +210,11 @@ function getSkill({ skillName, goldPerClickIncrement, description, amount, price
     `
 };
 
-function getEmployee({ employeeName, goldPerSecIncrement, description, amount, price, link }) {
+function getEmployee({ employeeName, goldPerSecIncrement, description, amount, price, link }, index) {
     return`
     <tr>
         <td class="upgrade-icon-cell">
-            <img class="skill-image" src="${ link }" alt="${ employeeName }">
+            <img class="skill-image" src="${ link }" alt="${ employeeName }" data-index="${index}">
         </td>
         <td class="upgrade-stats-cell">
             <p> db: ${ amount }</p>
@@ -211,7 +243,8 @@ function initialize() {
     goldPerSec = data.goldPerSec;
 
     clickingAreaNode.addEventListener('click',handleGoldClicked);
-    inventoryContainerNode.addEventListener('click',handleInventoryClicked);
+    skillsContainerNode.addEventListener('click',handleSkillsClicked);
+    employeecontainerNode.addEventListener('click',handleEmployeeClicked);
     render();
 };
 
