@@ -78,6 +78,15 @@ h1 {
 
 }
 
+.skill-image:active{
+    cursor: pointer;
+    /* transition: all 0.59 linear;
+   rotate:calc(360deg);*/
+    transform: rotateX(360deg);
+    animation-duration: .30s;
+
+}
+
 .inventory-container.per-click {
     margin:10px 10px 5px;
     border: 5px solid rgba(210, 143, 9, 0.464);
@@ -106,10 +115,45 @@ h1 {
     user-select: none;
    
 }
-.goldcoin:hover{
-    transition: all 0.5s linear;
+.goldcoin:active{
+    transition: all 0.2s linear;
     rotate:calc(360deg);
-    animation-duration: .5s;
+    animation-duration: .59s;
+}
+span[data-descr] {
+    position: relative;
+    cursor: help;
+    text-align: center;
+    font-size: 36px;
+    padding:3px;
+    top:25px;
+    color: rgb(245, 238, 230);
+    background-color: rgb(222, 172, 72);
+    width: 30px;
+    position: absolute;
+    margin:5px;
+    margin-left: 5px;
+    border: 1px solid rgb(222, 172, 72);
+    border-radius: 70%;
+    
+    
+    
+    
+}
+span[data-descr]:hover::after,
+span[data-descr]:focus::after {
+    content: attr(data-descr);
+    position: absolute;
+    left: 0;
+    top: 24px;
+    min-width: 150px;
+    border: 4px solid rgb(222, 172, 72);
+    border-radius: 20px;
+    background-color: #ffffcc;
+    padding: 12px;
+    color: #000;
+    font-size: 12px;
+    z-index: 1;
 }
 
 

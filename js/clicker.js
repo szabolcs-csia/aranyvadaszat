@@ -14,7 +14,7 @@ function getInitialState(){
         seconds: 0,
         gold: 0,
         goldPerClick: 1,
-        goldPerSec: 0.5,
+        goldPerSec: 0.25,
         skillList: [
             {
                 skillName: 'Aranykutatás',
@@ -200,7 +200,7 @@ function getSkill({ skillName, goldPerClickIncrement, description, amount, price
         <td class="upgrade-stats-cell">
             <p> db: ${ amount }</p>
             <p> ár:<strong>${formatPrice(price)}</strong></p>
-        </td>
+        </td></span>
         <td class="upgrade-icon-cell">
             <img class="skill-image" src="${ link }"
                 alt="${ skillName }"
