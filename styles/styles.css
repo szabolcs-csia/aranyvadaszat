@@ -104,8 +104,9 @@ h1 {
 .skill-image:hover {
     cursor: pointer;
     user-select: none;
-    transform: scale(1.1);
-    transition: all 0.15s linear;
+    transform: scale(1.15);
+    border: 3px solid var(--main-span-background-color);
+    /*transition: all 0.15s linear;*/
 
 }
 

@@ -76,7 +76,7 @@ function getInitialState() {
             },
             {
                 employeeName: 'Bagolyidomár',
-                goldPerSecIncrement: 5,
+                goldPerSecIncrement: 12,
                 description: 'Baglyokat betanító személy, aki a baglyokban élő hajlamot és ösztönt előhívva különféle feladatok elvégzésére képezz ki.',
                 amount: 0,
                 price: 1000,
@@ -84,7 +84,7 @@ function getInitialState() {
             },
             {
                 employeeName: 'Gyógyfőzet készítő',
-                goldPerSecIncrement: 10,
+                goldPerSecIncrement: 45,
                 description: 'Ősi, hatékony módon gyógyfőzeteket készít és értékesít a piacon.',
                 amount: 0,
                 price: 3000,
@@ -92,7 +92,7 @@ function getInitialState() {
             },
             {
                 employeeName: 'Kereskedő',
-                goldPerSecIncrement: 25,
+                goldPerSecIncrement: 150,
                 description: 'A szükségletek kielégítésére varázstárgyakat készít és értékesít.',
                 amount: 0,
                 price: 10000,
@@ -100,7 +100,7 @@ function getInitialState() {
             },
             {
                 employeeName: 'Varázsló Professzor',
-                goldPerSecIncrement: 100,
+                goldPerSecIncrement: 850,
                 description: 'Tanulókat képez ki szerződéses munkatársként.Szabadidejében alkímiával foglalkozik.',
                 amount: 0,
                 price: 50000,
@@ -108,10 +108,10 @@ function getInitialState() {
             },
             {
                 employeeName: 'Befektető kacsa',
-                goldPerSecIncrement: 250,
+                goldPerSecIncrement: 4000,
                 description: 'Dagober bácsihoz hasonló szakértelemmel kezeli és fialtatja a vagyonodat.',
                 amount: 0,
-                price: 200000,
+                price: 300000,
                 link: "./images/arany_kacsa.png",
             },
         ],
