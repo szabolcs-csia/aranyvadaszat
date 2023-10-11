@@ -1,20 +1,42 @@
 html {
     font-size: 16px;
     box-sizing: border-box;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-*{
+
+* {
     box-sizing: inherit;
     padding: 0;
     margin: 0;
 }
+
+:root {
+    --main-color-title: rgb(245, 238, 230);
+    --main-color-textshadow: rgb(122, 73, 32);
+    --main-color-border: rgba(255, 215, 0, 0.25);
+    --main-border: rgba(210, 143, 9, 0.464);
+    --main-span-background-color: rgb(222, 172, 72);
+    --main-box-shadow: rgba(34, 26, 9, 0.464);
+    --main-span-color: rgb(245, 238, 230);
+    --main-span: rgb(255, 255, 204);
+    --main-font-color: rgb(0, 0, 0);
+    --main-grid-area-color: rgb(255, 215, 0);
+}
+
+::before,
+::after {
+    box-sizing: inherit;
+}
+
 body {
     min-width: 540px;
     margin: 18px;
-    background-image:url(../images/arany_barsony_hatter.png);
+    background-image: url(../images/arany_barsony_hatter.png);
 }
-.skills-table, .business-table{
-    width:100%;
+
+.skills-table,
+.business-table {
+    width: 100%;
 }
 
 /******************main area**************************/
@@ -22,123 +44,136 @@ body {
 h1 {
     text-align: center;
     padding: 20px;
-    font-size: 50px;
-    color: rgb(245, 238, 230);
-    text-shadow: rgb(122, 73, 32) 1px 1px;
+    font-size: 2.5rem;
+    color: var(--main-color-title);
+    text-shadow: var(--main-color-textshadow) 1px 1px;
 }
+
 .main-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-.inventory-container{
+.inventory-container {
     min-width: 540px;
 }
 
 .clicking-area-container {
     text-align: center;
-    
+
 }
+
 .upgrade-stats-cell {
     width: 70px;
-    padding: 3px;;
+    padding: 3px;
+    ;
 }
-.upgrade-text-cell{
+
+.upgrade-text-cell {
     padding: 5px;
 }
-.upgrade-text-cell p{
+
+.upgrade-text-cell p {
     padding: 5px;
 }
-.upgrade-icon-cell{
+
+.upgrade-icon-cell {
     width: 110px;
     padding: 5px;
     user-select: none;
     cursor: pointer;
     opacity: 0.55;
-    
+
 }
+
 .upgrade-icon-cell:hover {
     opacity: 1;
 
 
 }
-.skill-image{
+
+.skill-image {
     width: 100px;
     border-radius: 50%;
-    border: 3px solid rgba(255, 215, 0,25);
+    border: 3px solid var(--main-color-border);
     cursor: pointer;
     user-select: none;
 
 }
-.skill-image:hover{
+
+.skill-image:hover {
     cursor: pointer;
     user-select: none;
-    transform:scale(1.1);
+    transform: scale(1.1);
     transition: all 0.15s linear;
 
 }
 
-.skill-image:active{
+.skill-image:active {
     cursor: pointer;
-    /* transition: all 0.59 linear;
-   rotate:calc(360deg);*/
     transform: rotateX(360deg);
     animation-duration: .30s;
 
 }
 
 .inventory-container.per-click {
-    margin:10px 10px 5px;
-    border: 5px solid rgba(210, 143, 9, 0.464);
+    margin: 10px 10px 5px;
+    border: 5px solid var(--main-border);
     border-radius: 20px;
     background-image: url(../images/aranyozott_hatt2.png);
-    box-shadow:rgba(34, 26, 9, 0.464) 2px 5px 5px;
+    box-shadow: var(--main-border) 2px 5px 5px;
 }
+
 .inventory-container.per-sec {
-    margin:10px 10px 5px;
-    border: 5px solid rgba(210, 143, 9, 0.464);
+    margin: 10px 10px 5px;
+    border: 5px solid var(--main-border);
     border-radius: 20px;
     background-image: url(../images/aranyozott_hatt2.png);
-    box-shadow:rgba(34, 26, 9, 0.464) 2px 5px 5px;
-    
+    box-shadow: var(--main-box-shadow) 5px 5px;
+
 }
+
 .clicking-area-container {
     margin: 10px 10px 5px;
     padding-top: 25px;
-    border: 5px solid rgba(210, 143, 9, 0.464);
+    border: 5px solid var(--main-border);
     border-radius: 20px;
     background-image: url(../images/aranyozott_hatter.png);
-    box-shadow:rgba(17, 14, 8, 0.464) 2px 5px 5px;
+    box-shadow: var(--main-box-shadow) 5px 5px;
 }
-.goldcoin{
+
+.goldcoin {
     cursor: pointer;
     user-select: none;
-   
+
 }
-.goldcoin:active{
+
+.goldcoin:active {
     transition: all 0.2s linear;
-    rotate:calc(360deg);
+    rotate: calc(360deg);
     animation-duration: .59s;
 }
+
 span[data-descr] {
     position: relative;
     cursor: help;
     text-align: center;
     font-size: 36px;
-    padding:3px;
-    top:25px;
-    color: rgb(245, 238, 230);
-    background-color: rgb(222, 172, 72);
+    padding: 3px;
+    top: 25px;
+    color: var(--main-span-color);
+    background-color: var(--main-span-background-color);
     width: 30px;
     position: absolute;
-    margin:5px;
+    margin: 5px;
     margin-left: 5px;
-    border: 1px solid rgb(222, 172, 72);
+    border: 1px solid var(--main-span-background-color);
     border-radius: 72%;
-      
-    
-    
+
+
+
 }
+
 span[data-descr]:hover::after,
 span[data-descr]:focus::after {
     content: attr(data-descr);
@@ -146,11 +181,11 @@ span[data-descr]:focus::after {
     left: 0;
     top: 24px;
     min-width: 150px;
-    border: 4px solid rgb(222, 172, 72);
+    border: 4px solid var(--main-span-background-color);
     border-radius: 20px;
-    background-color: #ffffcc;
+    background-color: var(--main-span);
     padding: 12px;
-    color: #000;
+    color: var(--main-font-color);
     font-size: 12px;
     z-index: 1;
 }
@@ -158,37 +193,36 @@ span[data-descr]:focus::after {
 
 
 @media screen and (max-width: 1440px) {
-       .main-container{
+    .main-container {
         grid-template-columns: 1fr 1fr;
-        grid-template-areas: 
+        grid-template-areas:
             "gold gold"
             "perclick persec";
-        }
-        .inventory-container.per-click{
-            grid-area: perclick;
-        }
-        .inventory-container.per-sec{
-            grid-area: persec;
-        }
-        
-        .clicking-area-container {
-           
-            grid-area:gold;
-        } 
+    }
+
+    .inventory-container.per-click {
+        grid-area: perclick;
+    }
+
+    .inventory-container.per-sec {
+        grid-area: persec;
+    }
+
+    .clicking-area-container {
+
+        grid-area: var(--main-grid-area-color);
+    }
 }
 
 @media screen and (max-width:996px) {
-    .main-container{
+    .main-container {
         grid-template-columns: 1fr;
-        grid-template-areas: 
-        "gold"
-        "perclick"
-        "persec";
+        grid-template-areas:
+            "gold"
+            "perclick"
+            "persec";
     }
-       
+
 }
 
-@media screen and (max-width:576px) {
-    
-    
-}
+@media screen and (max-width:576px) {}
