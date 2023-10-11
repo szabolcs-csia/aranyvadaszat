@@ -157,7 +157,7 @@ span[data-descr]:focus::after {
 
 
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1440px) {
        .main-container{
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 
@@ -177,7 +177,7 @@ span[data-descr]:focus::after {
         } 
 }
 
-@media screen and (max-width:992px) {
+@media screen and (max-width:996px) {
     .main-container{
         grid-template-columns: 1fr;
         grid-template-areas: 
