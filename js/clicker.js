@@ -14,7 +14,7 @@ function getInitialState() {
         seconds: 0,
         gold: 0,
         goldPerClick: 1,
-        goldPerSec: 0.25,
+        goldPerSec: 1,
         skillList: [
             {
                 skillName: 'Aranykutatás',
