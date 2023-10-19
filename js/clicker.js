@@ -1,9 +1,29 @@
 let clickingAreaNode = document.querySelector('.js-clicking-area-container');
 let skillsContainerNode = document.querySelector('.js-skills-container');
 let employeecontainerNode = document.querySelector('.js-employee-container');
+let timerAreaNode = document.querySelector('.js-timer-area');
+let goldAreaNode = document.querySelector('.js-gold-area');
+
+const CHANGE_TYPE = {
+    SKILL: 'SKILL',
+    EMPLOYEE: 'EMPLOYEE',
+    TIME: 'TIME',
+    ALL: 'ALL',
+    GOLD: 'GOLD',
+};
 
 //állapottér
-let { seconds, gold, goldPerClick, goldPerSec, skillList, employeeList, startTimestamp } = getInitialState();
+let {
+    seconds,
+    gold,
+    goldPerClick,
+    goldPerSec,
+    skillList,
+    employeeList,
+    startTimestamp,
+    skillsChanged,
+    employeeChanged,
+} = getInitialState();
 
 function getInitialState() {
     //fontos: a skillList és az employeeList tömbök nincsenek alapértelmezésbe hozva
@@ -125,7 +145,7 @@ function administrateTime() {
     if (rewardSeconds > 0) {
         gold += rewardSeconds * goldPerSec;
         seconds = elapsedTime;
-        render();
+        render(CHANGE_TYPE.TIME);
     }
 }
 
@@ -134,7 +154,7 @@ function administrateTime() {
 function handleGoldClicked(event) {
     if (event.target.dataset.enable_click === 'true') {
         gold += goldPerClick;
-        render();
+        render(CHANGE_TYPE.GOLD);
     }
 }
 
@@ -149,7 +169,7 @@ function handleSkillsClicked(event) {
         gold -= clickedSkill.price;
         goldPerClick += clickedSkill.goldPerClickIncrement;
         clickedSkill.amount += 1;
-        render();
+        render(CHANGE_TYPE.SKILL);
     }
 }
 
@@ -164,7 +184,7 @@ function handleEmployeeClicked(event) {
         gold -= clickedEmployee.price;
         goldPerSec += clickedEmployee.goldPerSecIncrement;
         clickedEmployee.amount += 1;
-        render();
+        render(CHANGE_TYPE.EMPLOYEE);
     }
 }
 
@@ -176,14 +196,13 @@ function formatPrice(price) {
     return `${kValue}K`;
 };
 
-function getClickingAreaTemplate() {
+function getTimerAreaTemplate() {
     return `
         <p><strong>${seconds} másodperc</strong></p>
-        <img 
-        src="./images/gold_taller_after.png" 
-        alt="arany klikkelo"
-        data-enable_click="true"
-        class="goldcoin">
+        `;
+};
+function getGoldAreaTemplate() {
+    return `
         <p><strong>${gold} arany</strong></p>
         <p>${goldPerClick} arany / klikk</p>
         <p>${goldPerSec} arany / mp</p>`;
@@ -228,11 +247,28 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
     `
 };
 
-function render() {
-    clickingAreaNode.innerHTML = getClickingAreaTemplate();
-    document.querySelector(".js-skills-tbody").innerHTML = skillList.map(getSkill).join("");
-    document.querySelector(".js-bussines-tbody").innerHTML = employeeList.map(getEmployee).join("");
+function render(changeType = CHANGE_TYPE.ALL) {
+    if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.TIME) {
+        timerAreaNode.innerHTML = getTimerAreaTemplate();
+    }
+    if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.SKILL) {
+        document.querySelector(".js-skills-tbody").innerHTML = skillList.map(getSkill).join("");
+    }
+    if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.EMPLOYEE) {
+        document.querySelector(".js-bussines-tbody").innerHTML = employeeList.map(getEmployee).join("");
+    }
 
+    goldAreaNode.innerHTML = getGoldAreaTemplate();
+
+    disableImgDragDrop();
+};
+
+function disableImgDragDrop() {
+    const imgList = document.querySelectorAll("img");
+
+    for (let img of imgList) {
+        img.ondragstart = () => false;
+    }
 }
 
 function initialize() {
