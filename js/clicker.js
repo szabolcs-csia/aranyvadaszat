@@ -246,13 +246,30 @@ function getEmployee({ employeeName, goldPerSecIncrement, description, amount, p
     </tr>    
     `
 };
+function getSkillsTemplate() {
+    let html = '';
+
+    let i = 0;
+    let hideRemainingSkills = false;
+    do {
+        let skill = skillList[i];
+        html += getSkill(skill, i);
+        if (skill.amount === 0) {
+            hideRemainingSkills = true;
+        }
+        i += 1;
+    }
+    while (i < skillList.length && !hideRemainingSkills)
+
+    return html;
+}
 
 function render(changeType = CHANGE_TYPE.ALL) {
     if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.TIME) {
         timerAreaNode.innerHTML = getTimerAreaTemplate();
     }
     if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.SKILL) {
-        document.querySelector(".js-skills-tbody").innerHTML = skillList.map(getSkill).join("");
+        document.querySelector(".js-skills-tbody").innerHTML = getSkillsTemplate();
     }
     if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.EMPLOYEE) {
         document.querySelector(".js-bussines-tbody").innerHTML = employeeList.map(getEmployee).join("");
