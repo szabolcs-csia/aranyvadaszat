@@ -264,6 +264,25 @@ function getSkillsTemplate() {
     return html;
 }
 
+function getEmployeesTemplate() {
+    let html = '';
+    let i = 0;
+    let hideRemainingEmployees = false;
+
+    do {
+        let employee = employeeList[i];
+        html += getEmployee(employee, i);
+        if (employee.amount === 0) {
+            hideRemainingEmployees = true;
+
+        }
+        i += 1;
+    }
+    while (i < employeeList.length && !hideRemainingEmployees);
+    return html;
+
+}
+
 function render(changeType = CHANGE_TYPE.ALL) {
     if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.TIME) {
         timerAreaNode.innerHTML = getTimerAreaTemplate();
@@ -272,7 +291,7 @@ function render(changeType = CHANGE_TYPE.ALL) {
         document.querySelector(".js-skills-tbody").innerHTML = getSkillsTemplate();
     }
     if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.EMPLOYEE) {
-        document.querySelector(".js-bussines-tbody").innerHTML = employeeList.map(getEmployee).join("");
+        document.querySelector(".js-bussines-tbody").innerHTML = getEmployeesTemplate();
     }
 
     goldAreaNode.innerHTML = getGoldAreaTemplate();
