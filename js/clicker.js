@@ -41,7 +41,7 @@ function getInitialState() {
                 goldPerClickIncrement: 1,
                 description: 'Ahol a víz áramlását akadályok megváltoztatják, aranyat találhatunk. ',
                 amount: 0,
-                price: 10,
+                price: 20,
                 link: "./images/aranykutatashoz_aranykutatas.png",
             },
             {
@@ -49,7 +49,7 @@ function getInitialState() {
                 goldPerClickIncrement: 10,
                 description: 'Baglyok betanítását készpénzre válthatjuk. Magasabb szinten postabaglyokat nevelhetünk. ',
                 amount: 0,
-                price: 200,
+                price: 150,
                 link: "./images/bagoly.png",
             },
             {
@@ -57,7 +57,7 @@ function getInitialState() {
                 goldPerClickIncrement: 25,
                 description: 'Minél jobban kitanuljuk a gyógyfőzetek készítésének tudományát,annál több gyógyfőzetet tudunk értékesíteni aranyért cserébe.',
                 amount: 0,
-                price: 750,
+                price: 400,
                 link: "./images/gyogyfozet.png",
             },
             {
@@ -65,7 +65,7 @@ function getInitialState() {
                 goldPerClickIncrement: 100,
                 description: 'Varázstárgyak készítésével és értékesítésével profitot zsebelhetünk be.',
                 amount: 0,
-                price: 4000,
+                price: 1500,
                 link: "./images/kereskedelem2.png",
             },
             {
@@ -73,7 +73,7 @@ function getInitialState() {
                 goldPerClickIncrement: 300,
                 description: 'Az aranykészítés tudománya titkos recept alapján.',
                 amount: 0,
-                price: 15000,
+                price: 4000,
                 link: "./images/alkimia.png",
             },
             {
@@ -81,7 +81,7 @@ function getInitialState() {
                 goldPerClickIncrement: 1000,
                 description: 'Az alkímia hatását tovább erősíti és oktatási tevékenységet végezhetünk.',
                 amount: 0,
-                price: 100000,
+                price: 12000,
                 link: "./images/varazs_tudomany.png",
             },
         ],
@@ -91,52 +91,54 @@ function getInitialState() {
                 goldPerSecIncrement: 1,
                 description: 'Aranyat tartalmazó homokból, iszapból aranyat keres és talál. ',
                 amount: 0,
-                price: 100,
+                price: 200,
                 link: "./images/aranykutato.png",
             },
             {
                 employeeName: 'Bagolyidomár',
-                goldPerSecIncrement: 12,
+                goldPerSecIncrement: 10,
                 description: 'Baglyokat betanító személy, aki a baglyokban élő hajlamot és ösztönt előhívva különféle feladatok elvégzésére képezz ki.',
                 amount: 0,
-                price: 1000,
+                price: 1800,
                 link: "./images/bagoly_idomar.png",
             },
             {
                 employeeName: 'Gyógyfőzet készítő',
-                goldPerSecIncrement: 45,
+                goldPerSecIncrement: 40,
                 description: 'Ősi, hatékony módon gyógyfőzeteket készít és értékesít a piacon.',
                 amount: 0,
-                price: 3000,
+                price: 7000,
                 link: "./images/gyogyfozet_keszito.png",
             },
             {
                 employeeName: 'Kereskedő',
-                goldPerSecIncrement: 150,
+                goldPerSecIncrement: 100,
                 description: 'A szükségletek kielégítésére varázstárgyakat készít és értékesít.',
                 amount: 0,
-                price: 10000,
+                price: 15000,
                 link: "./images/kereskedo.png",
             },
             {
                 employeeName: 'Varázsló Professzor',
-                goldPerSecIncrement: 850,
+                goldPerSecIncrement: 350,
                 description: 'Tanulókat képez ki szerződéses munkatársként.Szabadidejében alkímiával foglalkozik.',
                 amount: 0,
-                price: 50000,
+                price: 48000,
                 link: "./images/varazslo_prof.png",
             },
             {
                 employeeName: 'Befektető kacsa',
-                goldPerSecIncrement: 4000,
+                goldPerSecIncrement: 1000,
                 description: 'Dagober bácsihoz hasonló szakértelemmel kezeli és fialtatja a vagyonodat.',
                 amount: 0,
-                price: 300000,
+                price: 120000,
                 link: "./images/arany_kacsa.png",
             },
         ],
     }
 };
+
+
 
 function administrateTime() {
     let currentTimestamp = new Date().getTime();
@@ -282,6 +284,8 @@ function getEmployeesTemplate() {
     return html;
 
 }
+
+
 
 function render(changeType = CHANGE_TYPE.ALL) {
     if (changeType === CHANGE_TYPE.ALL || changeType === CHANGE_TYPE.TIME) {

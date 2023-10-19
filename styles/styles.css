@@ -195,6 +195,11 @@ span[data-descr]:focus::after {
     z-index: 1;
 }
 
+tr {
+    animation-fill-mode: forwards;
+    animation-delay: -2s;
+}
+
 
 
 @media screen and (max-width: 1440px) {
